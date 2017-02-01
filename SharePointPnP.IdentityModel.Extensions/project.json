@@ -1,6 +1,6 @@
 ﻿{
   "version": "1.2.0-*",
-  "authors": [ "Radi Atanassov" ],
+  "authors": [ "SharePoint Patterns and Practices" ],
   "title": "SharePointPnP.IdentityModel.Extensions",
 
   "dependencies": {
