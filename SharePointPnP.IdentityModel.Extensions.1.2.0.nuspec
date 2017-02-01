@@ -4,8 +4,8 @@
         <id>SharePointPnP.IdentityModel.Extensions</id>
         <version>1.2.0</version>
         <title>SharePoint PnP IdentityModel Extensions Library</title>
-        <authors>Microsoft SharePoint Developer Patterns &amp;amp; Practices</authors>
-        <owners>Microsoft SharePoint Developer Patterns &amp;amp; Practices</owners>
+        <authors>SharePoint Patterns &amp;amp; Practices</authors>
+        <owners>SharePoint Patterns &amp;amp; Practices</owners>
         <licenseUrl>https://github.com/SharePoint/PnP-IdentityModel/blob/master/LICENSE</licenseUrl>
         <projectUrl>http://aka.ms/OfficeDevPnP</projectUrl>
         <iconUrl>http://i.imgur.com/6MWZgWW.png</iconUrl>
