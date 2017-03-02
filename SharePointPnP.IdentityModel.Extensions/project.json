@@ -1,10 +1,9 @@
-﻿{
+{
   "version": "1.2.0-*",
   "authors": [ "SharePoint Patterns and Practices" ],
   "title": "SharePointPnP.IdentityModel.Extensions",
 
   "dependencies": {
-    "Microsoft.Extensions.WebEncoders": "1.0.0",
     "Microsoft.IdentityModel": "6.1.7600.16394"
   },
 
