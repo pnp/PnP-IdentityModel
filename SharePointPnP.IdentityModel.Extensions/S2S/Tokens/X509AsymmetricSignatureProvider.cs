@@ -16,7 +16,7 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Tokens
             System.Security.Cryptography.RSACryptoServiceProvider rSACryptoServiceProvider = x509Key.GetAsymmetricAlgorithm("http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", true) as System.Security.Cryptography.RSACryptoServiceProvider;
             if (rSACryptoServiceProvider == null)
             {
-                throw new System.InvalidOperationException("Could not get algorithm from X509AsymmetricSecurityKey");
+                throw new System.InvalidOperationException("Could not get algorithm from X509AsymmetricSecurityKey for \"RSACryptoServiceProvider\"");
             }
             this.Initialize(rSACryptoServiceProvider);
         }
