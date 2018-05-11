@@ -61,14 +61,14 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
             };
         }
 
-        public static OAuth2AccessTokenRequest CreateAccessTokenRequestWithClientCredentials(string clientId, string clientSecret, string scope)
+        public static OAuth2AccessTokenRequest CreateAccessTokenRequestWithClientCredentials(string clientId, string clientSecret, string resource)
         {
             return new OAuth2AccessTokenRequest
             {
                 GrantType = "client_credentials",
                 ClientId = clientId,
                 ClientSecret = clientSecret,
-                Scope = scope
+                Resource = resource
             };
         }
 
