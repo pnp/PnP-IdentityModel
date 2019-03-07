@@ -13,15 +13,15 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Tokens
         public X509AsymmetricSignatureProvider(System.IdentityModel.Tokens.X509AsymmetricSecurityKey x509Key)
         {
             Utility.VerifyNonNullArgument("x509Key", x509Key);
-            System.Security.Cryptography.RSACryptoServiceProvider rSACryptoServiceProvider = x509Key.GetAsymmetricAlgorithm("http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", true) as System.Security.Cryptography.RSACryptoServiceProvider;
-            if (rSACryptoServiceProvider == null)
+            var rsaCryptoServiceProvider = x509Key.GetAsymmetricAlgorithm("http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", true) as RSACryptoServiceProvider;
+            if (rsaCryptoServiceProvider == null)
             {
                 throw new System.InvalidOperationException("Could not get algorithm from X509AsymmetricSecurityKey");
             }
-            this.Initialize(rSACryptoServiceProvider);
+            this.Initialize(rsaCryptoServiceProvider);
         }
 
-        public X509AsymmetricSignatureProvider(System.Security.Cryptography.RSACryptoServiceProvider rsa)
+        public X509AsymmetricSignatureProvider(RSACryptoServiceProvider rsa)
         {
             this.Initialize(rsa);
         }
@@ -46,15 +46,15 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Tokens
             }
         }
 
-        private void Initialize(System.Security.Cryptography.RSACryptoServiceProvider rsa)
+        private void Initialize(RSACryptoServiceProvider rsa)
         {
             if (Utility.RequiresFipsCompliance)
             {
-                System.Security.Cryptography.CryptoConfig.AddOID("2.16.840.1.101.3.4.2.1", new string[]
+                CryptoConfig.AddOID("2.16.840.1.101.3.4.2.1", new string[]
                 {
                     "SHA256CSP"
                 });
-                System.Security.Cryptography.CryptoConfig.AddAlgorithm(typeof(SHA256CryptoServiceProvider), new string[]
+                CryptoConfig.AddAlgorithm(typeof(SHA256CryptoServiceProvider), new string[]
                 {
                     "SHA256CSP"
                 });
