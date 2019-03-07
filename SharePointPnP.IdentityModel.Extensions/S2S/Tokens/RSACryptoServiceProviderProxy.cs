@@ -15,10 +15,10 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Tokens
         public RSACryptoServiceProviderProxy(System.Security.Cryptography.RSACryptoServiceProvider rsa)
         {
             Utility.VerifyNonNullArgument("rsa", rsa);
-            if (rsa.CspKeyContainerInfo.ProviderType != 24)
+            if (rsa.CspKeyContainerInfo.ProviderType != PROV_RSA_AES)
             {
                 System.Security.Cryptography.CspParameters cspParameters = new System.Security.Cryptography.CspParameters();
-                cspParameters.ProviderType = 24;
+                cspParameters.ProviderType = PROV_RSA_AES;
                 cspParameters.KeyContainerName = rsa.CspKeyContainerInfo.KeyContainerName;
                 cspParameters.KeyNumber = (int)rsa.CspKeyContainerInfo.KeyNumber;
                 if (rsa.CspKeyContainerInfo.MachineKeyStore)
