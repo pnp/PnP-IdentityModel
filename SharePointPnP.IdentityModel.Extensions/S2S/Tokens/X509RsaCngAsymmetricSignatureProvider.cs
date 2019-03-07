@@ -8,7 +8,7 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Tokens
     {
         private bool _disposed;
 
-        private RSACng _rsa;
+        private RSACngProxy _rsaProxy;
 
         private HashAlgorithmName? _hashAlgorithm;
 
@@ -38,10 +38,10 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Tokens
                     {
                         this._hashAlgorithm = null;
                     }
-                    if (this._rsa != null)
+                    if (this._rsaProxy != null)
                     {
-                        this._rsa.Dispose();
-                        this._rsa = null;
+                        this._rsaProxy.Dispose();
+                        this._rsaProxy = null;
                     }
                 }
                 this._disposed = true;
@@ -66,7 +66,7 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Tokens
             {
                 this._hashAlgorithm = new HashAlgorithmName("SHA256");
             }
-            this._rsa = rsa;
+            this._rsaProxy = new RSACngProxy(rsa);
         }
 
         public override byte[] Sign(byte[] signingInput)
@@ -76,8 +76,7 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Tokens
             {
                 throw new NullReferenceException("Hash algorithm has not been set");
             }
-            var signaturePadding = RSASignaturePadding.Pkcs1;
-            return this._rsa.SignData(signingInput, this._hashAlgorithm.Value, signaturePadding);
+            return this._rsaProxy.SignData(signingInput, this._hashAlgorithm.Value);
         }
 
         public override bool Verify(byte[] signingInput, byte[] signature)
@@ -88,7 +87,7 @@ namespace SharePointPnP.IdentityModel.Extensions.S2S.Tokens
             {
                 throw new NullReferenceException("Hash algorithm has not been set");
             }
-            return this._rsa.VerifyData(signingInput, signature, this._hashAlgorithm.Value, RSASignaturePadding.Pkcs1);
+            return this._rsaProxy.VerifyData(signingInput, this._hashAlgorithm.Value, signature);
         }
     }
 }
