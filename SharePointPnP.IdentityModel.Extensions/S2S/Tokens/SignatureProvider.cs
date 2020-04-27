@@ -12,7 +12,7 @@
             System.IdentityModel.Tokens.X509AsymmetricSecurityKey x509AsymmetricSecurityKey = signingCredentials.SigningKey as System.IdentityModel.Tokens.X509AsymmetricSecurityKey;
             if (x509AsymmetricSecurityKey != null)
             {
-                return new X509AsymmetricSignatureProvider(x509AsymmetricSecurityKey);
+                return AsymmetricSignatureProviderFactory.CreateSignatureProvider(x509AsymmetricSecurityKey);
             }
             System.IdentityModel.Tokens.SymmetricSecurityKey symmetricSecurityKey = signingCredentials.SigningKey as System.IdentityModel.Tokens.SymmetricSecurityKey;
             if (symmetricSecurityKey != null)
