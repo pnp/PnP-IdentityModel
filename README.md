@@ -1,3 +1,13 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- csharp
+extensions:
+  contentType: samples
+  createdDate: 1/9/2017 11:01:15 AM
+---
 # PnP-IdentityModel
 
 This repository holds code related to authentication in SharePoint.
